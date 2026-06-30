@@ -443,3 +443,48 @@ a:focus-visible {
     gap: 12px;
   }
 }
+/* ============================================
+   GOOGLE Oauth
+   ============================================ */
+
+.oauth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  margin: 4px 0;
+}
+
+.oauth-divider::before,
+.oauth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border);
+}
+
+.oauth-divider span {
+  padding: 0 12px;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  padding: 11px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.google-btn:hover {
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}

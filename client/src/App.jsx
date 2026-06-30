@@ -3,6 +3,7 @@ import { useAuth } from './context/AuthContext';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
+import OAuthSuccess from './pages/OAuthSuccess';
 
 // A wrapper that blocks access if not logged in
 const ProtectedRoute = ({ children }) => {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/oauth-success" element={<OAuthSuccess />} />
         <Route
           path="/dashboard"
           element={

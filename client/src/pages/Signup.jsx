@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import api from '../api/axios';
-import { useAuth } from '../context/AuthContext';
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import api from "../api/axios";
+import { useAuth } from "../context/AuthContext";
 
 const Signup = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const { login } = useAuth();
@@ -15,17 +15,22 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
-      const response = await api.post('/auth/signup', { name, email, password });
+      const response = await api.post("/auth/signup", {
+        name,
+        email,
+        password,
+      });
       const { user, token } = response.data;
 
       login(user, token);
-      navigate('/dashboard');
+      navigate("/dashboard");
     } catch (err) {
-      const message = err.response?.data?.message || 'Signup failed. Please try again.';
+      const message =
+        err.response?.data?.message || "Signup failed. Please try again.";
       setError(message);
     } finally {
       setLoading(false);
@@ -65,9 +70,15 @@ const Signup = () => {
         />
 
         <button type="submit" disabled={loading}>
-          {loading ? 'Creating account...' : 'Sign Up'}
+          {loading ? "Creating account..." : "Sign Up"}
         </button>
+        <div className="oauth-divider">
+          <span>or</span>
+        </div>
 
+        <a href="http://localhost:5000/api/auth/google" className="google-btn">
+          Continue with Google
+        </a>
         <p>
           Already have an account? <Link to="/login">Login</Link>
         </p>

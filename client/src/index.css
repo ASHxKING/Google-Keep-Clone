@@ -1,0 +1,399 @@
+/* ============================================
+   GOOGLE KEEP CLONE - Design System
+   Theme: Paper-like sticky notes, warm & playful
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #FAFAF7;
+  --surface: #FFFFFF;
+  --ink: #2D2A26;
+  --ink-soft: #6B675F;
+  --accent: #E8A33D;
+  --accent-soft: #FCE8C8;
+  --border: #E5E1D8;
+  --danger: #D96C5F;
+
+  --note-yellow: #FFF8DC;
+  --note-mint: #DDF2E7;
+  --note-lavender: #ECE2F5;
+  --note-peach: #FBE5D6;
+  --note-sky: #DCEEF7;
+  --note-white: #FFFFFF;
+
+  --radius: 12px;
+  --shadow-soft: 0 1px 3px rgba(45, 42, 38, 0.08);
+  --shadow-hover: 0 8px 24px rgba(45, 42, 38, 0.14);
+
+  --font-display: 'Quicksand', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.navbar h1::before {
+  content: '✦ ';
+  color: var(--accent);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar-right span {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.navbar-right button {
+  background: var(--ink);
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.navbar-right button:hover {
+  background: var(--danger);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   DASHBOARD LAYOUT
+   ============================================ */
+
+.dashboard-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ============================================
+   CREATE NOTE FORM
+   ============================================ */
+
+.create-note {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.2s ease;
+}
+
+.create-note:focus-within {
+  box-shadow: var(--shadow-hover);
+}
+
+.create-note input,
+.create-note textarea {
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  background: transparent;
+  resize: none;
+}
+
+.create-note input {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.create-note input::placeholder,
+.create-note textarea::placeholder {
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.create-note textarea {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.create-note button {
+  align-self: flex-end;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 9px 22px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.create-note button:hover {
+  background: #D4922F;
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   NOTES GRID
+   ============================================ */
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.note-card {
+  border-radius: var(--radius);
+  padding: 18px 18px 14px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(45, 42, 38, 0.06);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 120px;
+}
+
+.note-card:hover {
+  transform: translateY(-3px) rotate(-0.4deg);
+  box-shadow: var(--shadow-hover);
+}
+
+.note-card h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 0;
+  color: var(--ink);
+}
+
+.note-card p {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink);
+  margin: 0;
+  flex-grow: 1;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.note-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 8px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.note-card:hover .note-actions {
+  opacity: 1;
+}
+
+.note-actions button {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(45, 42, 38, 0.1);
+  border-radius: 16px;
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background 0.15s ease;
+}
+
+.note-actions button:hover {
+  background: white;
+}
+
+/* ============================================
+   AUTH PAGES (Login / Signup)
+   ============================================ */
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 20px;
+}
+
+.auth-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-form h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.6rem;
+  margin: 0 0 6px;
+  text-align: center;
+  color: var(--ink);
+}
+
+.auth-form h2::before {
+  content: '✦ ';
+  color: var(--accent);
+}
+
+.auth-form input {
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.auth-form input:focus {
+  border-color: var(--accent);
+}
+
+.auth-form button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.auth-form button:hover:not(:disabled) {
+  background: #D4922F;
+  transform: translateY(-1px);
+}
+
+.auth-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-form p {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.auth-form a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-form a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  background: #FCEAE8;
+  color: var(--danger);
+  padding: 9px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 0;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 14px 18px;
+  }
+
+  .navbar-right span {
+    display: none;
+  }
+
+  .dashboard-content {
+    padding: 24px 16px 60px;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+}

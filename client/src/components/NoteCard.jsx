@@ -1,6 +1,11 @@
 const NoteCard = ({ note, onDelete, onTogglePin }) => {
+  const isDefaultColor = !note.color || note.color === '#ffffff';
+
   return (
-    <div className="note-card" style={{ backgroundColor: note.color }}>
+    <div
+      className="note-card"
+      style={!isDefaultColor ? { backgroundColor: note.color } : undefined}
+    >
       <h3>{note.title}</h3>
       <p>{note.content}</p>
       <div className="note-actions">

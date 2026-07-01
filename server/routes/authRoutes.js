@@ -3,6 +3,8 @@ const router = express.Router();
 const passport = require('../config/passport');
 const jwt = require('jsonwebtoken');
 const { signup, login } = require('../controllers/authController');
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
+
 
 router.post('/signup', signup);
 router.post('/login', login);
@@ -28,8 +30,9 @@ router.get(
     );
 
     // Redirect back to frontend with token as a query param
+
     res.redirect(
-      `http://localhost:5173/oauth-success?token=${token}&name=${encodeURIComponent(user.name)}&email=${encodeURIComponent(user.email)}&id=${user.id}`
+      `${CLIENT_URL}/oauth-success?token=${token}&name=${encodeURIComponent(user.name)}&email=${encodeURIComponent(user.email)}&id=${user.id}`
     );
   }
 );

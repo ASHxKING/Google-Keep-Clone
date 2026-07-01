@@ -10,7 +10,7 @@ const notesRoutes = require('./routes/notesRoutes');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: ['http://localhost:5173', 'https://google-keep-clone-self-iota.vercel.app/'],
   credentials: true,
 }));
 app.use(express.json());

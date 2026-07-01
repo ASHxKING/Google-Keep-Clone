@@ -76,7 +76,7 @@ const Signup = () => {
           <span>or</span>
         </div>
 
-        <a href="http://localhost:5000/api/auth/google" className="google-btn">
+        <a href={`${import.meta.env.VITE_API_URL?.replace('/api', '')}/api/auth/google`} className="google-btn">
           Continue with Google
         </a>
         <p>
